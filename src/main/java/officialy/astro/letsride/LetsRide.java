@@ -1,5 +1,6 @@
 package officialy.astro.letsride;
 
+import astro.lib.AstroTab;
 import astro.lib.cfg.AstroConfig;
 import astro.lib.cfg.ConfigRegistry;
 import astro.lib.proxy.IProxy;
@@ -22,9 +23,11 @@ public class LetsRide {
 
     public static final String MODID = "letsride";
     public static final String NAME = "Lets Ride";
-    public static final String VERSION = "1.0.0";
+    public static final String VERSION = "0.0.1a";
 
     private AstroConfig CONFIG = new LetsRideConfig();
+    public static AstroTab LETSRIDE_TAB_ITEMS;
+    public static AstroTab LETSRIDE_TAB_BLOCKS;
 
     @Instance(MODID)
     public LetsRide INSTANCE;
@@ -35,16 +38,20 @@ public class LetsRide {
     @EventHandler
     public void onConstruction(FMLConstructionEvent event) {
         ConfigRegistry.register(CONFIG);
+        LETSRIDE_TAB_ITEMS = new AstroTab("letsride.items");
+        LETSRIDE_TAB_BLOCKS = new AstroTab("letsride.blocks");
     }
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         PROXY.preInit();
+        LetsRideItems.register();
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
         PROXY.init();
+
     }
 
     @EventHandler
