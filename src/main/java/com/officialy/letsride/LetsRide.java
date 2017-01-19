@@ -1,7 +1,8 @@
 package com.officialy.letsride;
 
 import com.mcmoddev.lib.config.ConfigurationHandler;
-import com.officialy.letsride.proxy.CommonProxy;
+import com.officialy.letsride.proxy.IProxy;
+import com.officialy.letsride.proxy.ServerProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -22,7 +23,7 @@ public class LetsRide {
     public LetsRide INSTANCE;
 
     @SidedProxy(clientSide = Ref.CLIENT_PROXY, serverSide = Ref.SERVER_PROXY)
-    public static CommonProxy PROXY;
+    public static IProxy PROXY;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
